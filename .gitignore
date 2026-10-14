@@ -1,0 +1,13 @@
+.venv/
+.cache/
+upstream/
+__pycache__/
+.DS_Store
+*.pyc
+.env
+.env.*
+!.env.example
+*.log
+checkpoints/
+*.pt
+*.safetensors

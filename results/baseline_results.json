@@ -1,0 +1,23 @@
+{
+  "status": "completed_text_baselines_only",
+  "recorded_from": "Metrics computed during the initial session from saved sample scores; not rerun during repository preparation.",
+  "seed": 20261014,
+  "evaluation_prompt_pairs": 64,
+  "evaluation_answers": 128,
+  "classifier_training_prompt_pairs": 1024,
+  "target": "Public Hallucination II versus Normal dataset label",
+  "metrics": {
+    "lexical_score_roc_auc": 0.875,
+    "tfidf_score_roc_auc": 1.0
+  },
+  "scores_file": "sample.jsonl",
+  "uncertainty_intervals": null,
+  "activation_scoring_completed": false,
+  "fine_tuning_completed": false,
+  "limitations": [
+    "Dataset-label discrimination does not measure prediction of post-SFT behaviour.",
+    "TF-IDF baseline uses supervised labels from separate prompt pairs.",
+    "The test sample is small and comes from deliberately contrasting synthetic answer styles.",
+    "The fitted classifier was not serialized; per-example scores and selected coefficients were saved."
+  ]
+}
