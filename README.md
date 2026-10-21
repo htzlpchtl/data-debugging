@@ -4,7 +4,7 @@ Research on predicting the behavioural effects of supervised fine-tuning (SFT) d
 
 ## Current checkpoint
 
-**Only the text baselines have completed.** No persona vector, activation ranking, fine-tuned model, or downstream behavioural result has been produced. The activation implementation has not passed its numerical check.
+**Text baselines and a two-call remote OpenRouter judge compatibility check have completed.** No persona vector, activation ranking, fine-tuned model, or downstream behavioural result has been produced. The activation implementation has not yet undergone its numerical check. See the [2026-10-21 checkpoint](remote/CHECKPOINT_2026-10-21.md) for the verified state and proposed next experiment.
 
 | Completed measurement | AUC for the supplied dataset label |
 | --- | ---: |
@@ -55,12 +55,16 @@ See [THIRD_PARTY.md](THIRD_PARTY.md) for attribution and the upstream licence.
 ## Next experiment
 
 Remote execution instructions are provided in [remote/README.md](remote/README.md),
-with [workload and cost estimates](remote/BUDGET.md). The files have passed static
-checks only; dependencies, judge access and CUDA execution remain unverified.
-`remote/scoring-pilot.json` targets the frozen 128-answer scoring milestone;
+with [workload and cost estimates](remote/BUDGET.md). The remote environment is
+installed and the [OpenRouter judge compatibility check](remote/OPENROUTER_CHECK.md)
+passed. Qwen loading and CUDA execution remain unverified.
+`remote/scoring-pilot-openrouter.json` prepares the frozen 128-answer scoring
+milestone using the checked judge route; `remote/scoring-pilot.json` retains the
+original direct-OpenAI configuration.
 `remote/sft-pilot.json` separately proposes three 256-example, one-epoch LoRA runs.
-The remote pipeline has not been executed. Its outputs are written to ignored
-`runs/`, separate from the completed baseline evidence.
+The GPU scoring and SFT stages have not been executed. Remote outputs are written
+to ignored `runs/`, separate from the completed baseline evidence. Further
+experimental execution awaits explicit approval.
 
 The first remote stage compares response-activation calculations against the official implementation, followed by vector extraction and scoring of the frozen sample. Deviations from the published method are recorded in the configuration. The historical MLX draft proposed quantization, fewer extraction responses, a self-judge, and shorter generations; those settings were not validated.
 

@@ -317,8 +317,23 @@ def preflight(c):
 
 def judge(c, target, arm):
     from openai import OpenAI
-    if not os.environ.get("OPENAI_API_KEY"):
-        raise ValueError("OPENAI_API_KEY is needed for judge stages only.")
+    api = c.cfg.get("judge_api", "openai")
+    if api not in ("openai", "openrouter"):
+        raise ValueError("judge_api must be openai or openrouter.")
+    key_name = "OPENROUTER_API_KEY" if api == "openrouter" else "OPENAI_API_KEY"
+    key = os.environ.get(key_name)
+    if not key:
+        raise ValueError(f"{key_name} is needed for judge stages only.")
+    base_url = "https://openrouter.ai/api/v1" if api == "openrouter" else "https://api.openai.com/v1"
+    request_options = {}
+    if api == "openrouter":
+        if not c.cfg.get("judge_provider"):
+            raise ValueError("Pin judge_provider for OpenRouter; automatic provider fallback is disabled.")
+        request_options["extra_body"] = {"provider": {
+            "only": [c.cfg["judge_provider"]], "allow_fallbacks": False,
+            "require_parameters": c.cfg.get("judge_require_parameters", True),
+            "max_price": {"prompt": c.cfg["judge_input_usd_per_million"],
+                          "completion": c.cfg["judge_output_usd_per_million"]}}}
     prompts = load_source("persona_judge_prompts", UPSTREAM / "eval/prompts.py").Prompts
     if target == "extraction":
         rows = c.complete("extraction", extraction_jobs(c))
@@ -330,7 +345,10 @@ def judge(c, target, arm):
     else:
         name, template = f"evaluation_{arm}", c.evaluation["eval_prompt"]
         rows = c.complete(name, evaluation_jobs(c))
-    client = OpenAI(max_retries=2, timeout=45)
+    # Explicit URLs prevent an unrecorded OPENAI_BASE_URL from changing the route.
+    # No automatic OpenRouter retries: compatibility probes must have bounded calls.
+    client = OpenAI(api_key=key, base_url=base_url,
+                    max_retries=0 if api == "openrouter" else 2, timeout=45)
     path = c.out / f"judge_{name}.jsonl"
     done = {r["id"] for r in read_rows(path)}
     # Ledger survives partial rows and counts successful requests, including retries
@@ -350,18 +368,26 @@ def judge(c, target, arm):
                 raise RuntimeError("Estimated judge budget reached; review ledger before increasing it.")
             completion = client.chat.completions.create(model=c.cfg["judge_model"],
                 messages=[{"role": "user", "content": prompt}], max_tokens=1,
-                temperature=0, logprobs=True, top_logprobs=20, seed=0)
+                temperature=0, logprobs=True, top_logprobs=20, seed=0, **request_options)
             usage = completion.usage
             if usage is None:
                 raise RuntimeError("Judge returned no usage; cannot account for spend.")
             cost = (usage.prompt_tokens * c.cfg["judge_input_usd_per_million"]
                     + usage.completion_tokens * c.cfg["judge_output_usd_per_million"]) / 1e6
+            content = completion.choices[0].logprobs if completion.choices else None
             append_row(ledger, {"id": completion.id, "target": name, "row_id": row["id"],
-                               "metric": metric, "estimated_usd": cost, "usage": usage.model_dump()})
+                               "metric": metric, "estimated_usd": cost, "usage": usage.model_dump(),
+                               "judge_api": api, "requested_model": c.cfg["judge_model"],
+                               "returned_model": completion.model,
+                               "requested_provider": c.cfg.get("judge_provider"),
+                               "returned_provider": getattr(completion, "provider", None),
+                               "top_logprobs_returned": len(content.content[0].top_logprobs or [])
+                               if content and content.content else 0})
             spent += cost
-            content = completion.choices[0].logprobs
-            if not content or not content.content:
+            if not content or not content.content or not content.content[0].top_logprobs:
                 raise RuntimeError("Judge lacks required logprobs; do not silently substitute methods.")
+            if len(content.content[0].top_logprobs) != 20:
+                raise RuntimeError("Judge did not return the requested 20 top logprobs.")
             probabilities = {p.token: math.exp(p.logprob) for p in content.content[0].top_logprobs}
             numeric = {}
             for token, probability in probabilities.items():
@@ -373,6 +399,8 @@ def judge(c, target, arm):
                     numeric[token] = (number, probability)
             mass = sum(p for _, p in numeric.values())
             result[metric] = sum(n * p for n, p in numeric.values()) / mass if mass >= 0.25 else None
+            if target == "check" and result[metric] is None:
+                raise RuntimeError("Judge check has insufficient numeric probability mass.")
             result[f"{metric}_raw"] = completion.model_dump()
         append_row(path, result)
     c.complete(f"judge_{name}", rows)
@@ -473,6 +501,9 @@ def main():
     remote_only()  # Must precede ML imports, network access, and experiment writes.
     import fcntl
     c = Context(args)
+    if c.cfg.get("judge_check_only") and not (
+            args.stage == "init" or (args.stage == "judge" and args.target == "check")):
+        raise ValueError("This config permits only init and judge --target check.")
     with (c.out / ".command.lock").open("w") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         c.check_manifest(initialize=args.stage == "init")

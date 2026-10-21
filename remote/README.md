@@ -1,6 +1,11 @@
 # Remote hallucination pilot
 
-Status: **prepared and statically checked; never installed or executed on a GPU**.
+Status: **remote environment installed; OpenRouter judge compatibility checked**.
+The target model has not been loaded; GPU preflight, generation, activation scoring
+and SFT remain unexecuted. See [OPENROUTER_CHECK.md](OPENROUTER_CHECK.md) for the
+two-call API check and its routing discrepancy.
+The [2026-10-21 checkpoint](CHECKPOINT_2026-10-21.md) records completed evidence,
+prepared files and the proposed next experiment; further execution awaits approval.
 The completed text-baseline evidence is stored in `results/`. The remote pipeline
 has not produced activation or SFT results. All experimental execution is
 restricted to remote resources under the project instructions in `AGENTS.md`.
@@ -37,6 +42,7 @@ to the remote machine, with SSH access configured for the operator. The experime
 scripts do not provision infrastructure.
 
 Supply `OPENAI_API_KEY` securely in the remote environment for judge stages only.
+The optional OpenRouter check below uses `OPENROUTER_API_KEY` instead.
 Public Qwen weights do not require an HF token. Do not put credentials in JSON,
 source files, Git, logs, or command history. Runpod credentials are not needed by
 the experiment process itself.
@@ -45,6 +51,60 @@ The original judge snapshot is configured deliberately. Official documentation
 now labels GPT-4.1 mini deprecated; availability must be checked using the small
 `judge --target check` stage. If unavailable, stop and choose/document a replacement
 and its rates in a new config. Do not silently substitute a model or scoring rule.
+
+## OpenRouter judge compatibility check
+
+`remote/openrouter-check.json` records the initial strict compatibility check. It
+permits only `init` and `judge --target check`, with a $0.01 estimated API budget.
+It does not load Qwen, construct a vector or authorize the scoring/SFT pilots.
+OpenRouter credits pay for API calls; GPU allocation still bills independently.
+
+The route uses `openai/gpt-4.1-mini`, pins the `openai` provider, disables provider
+fallbacks and automatic client retries, and caps provider token prices at
+$0.40/$1.60 per million input/output tokens. The public endpoint catalog names
+the 2025-04-14 snapshot, but the request uses an alias. Requested and returned
+model/provider information is recorded with usage. This is a routing deviation
+from the direct OpenAI configuration, not a claim of identical responses.
+
+OpenRouter's public endpoint metadata did not advertise `logprobs` support when
+inspected on 2026-10-21. The initial check sets `require_parameters: true` and
+requires 20 returned top-token log probabilities plus sufficient numeric mass
+for each of the two original rubrics. A successful HTTP response or a printed
+numeric score alone is insufficient. Failure must not trigger a different judge
+or substitute plain-text scoring. Any diagnostic routing change needs its own
+config and output directory so evidence is not mixed.
+
+The strict check returned HTTP 404 at the parameter-filtering step. A separately
+recorded diagnostic with `require_parameters: false` then returned all 20 requested
+log probabilities for both rubrics and passed the numeric-mass checks. The total
+API charge was $0.0002544. Disabling this catalog filter did not disable response
+validation or change the scoring formula. Full details and limits are in the
+[compatibility note](OPENROUTER_CHECK.md).
+
+After placing the key in the approved remote environment, run on that remote
+machine only:
+
+```bash
+export DATA_DEBUGGING_REMOTE=1
+source .venv-cuda/bin/activate
+python remote/run.py init --config remote/openrouter-check.json --out runs/openrouter-check
+python remote/run.py judge --target check --config remote/openrouter-check.json --out runs/openrouter-check --max-seconds 120
+```
+
+The budget ledger uses token counts and configured prices; it is not a
+provider-enforced account spending limit. The compatibility check is at most two
+one-token calls without automatic retries. Keep the original configurations and
+completed text-baseline evidence unchanged. A full OpenRouter pilot would use a
+new configuration and output directory. `remote/scoring-pilot-openrouter.json`
+prepares that pilot, with the resolved Qwen revision pinned, a $1 estimated API
+budget, catalog filtering disabled, and response validation retained. It has not
+been executed and requires approval for GPU computation and spending. Use
+`--config remote/scoring-pilot-openrouter.json --out runs/scoring-pilot-openrouter`
+on every stage instead of the default config/output directory.
+
+References: [OpenRouter SDK integration](https://openrouter.ai/docs/guides/community/openai-sdk),
+[provider routing](https://openrouter.ai/docs/guides/routing/provider-selection),
+and [GPT-4.1 mini endpoints](https://openrouter.ai/api/v1/models/openai/gpt-4.1-mini/endpoints).
 
 ## First remote session: scoring pilot
 
