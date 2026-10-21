@@ -5,7 +5,7 @@ The source of the extraction questions/prompts is the pinned upstream repository
 """
 if __name__ == "__main__":
     raise SystemExit(
-        "Local experiments are prohibited after the Mac crash. "
+        "Experimental execution is remote-only. "
         "This historical draft is disabled before model-library imports. "
         "See README.md; future experiments require approved remote compute."
     )

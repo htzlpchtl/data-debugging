@@ -1,6 +1,6 @@
 # Data debugging
 
-A short BlueDot technical AI safety project asking whether we can predict the behavioural effects of supervised fine-tuning (SFT) data before training, and whether model activations add useful predictive information beyond inspecting the text.
+Research on predicting the behavioural effects of supervised fine-tuning (SFT) data before training, and testing whether model activations add predictive information beyond the semantic content of the text.
 
 ## Current checkpoint
 
@@ -25,24 +25,24 @@ The stronger validation in Section 6.3 selects high, low, and random projection-
 
 ## Execution constraint
 
-**Do not run local experiments, model inference, fine-tuning, benchmarks, or model-loading checks.** The local 4-bit 7B attempt on an 8 GB Mac caused a crash, and the user explicitly prohibited further local experiments. The historical `scripts/run_local.py` entry point is disabled before MLX imports. It is retained for inspection, not execution.
+Experimental execution is **remote-only**. Local inference, fine-tuning, activation extraction, benchmarks, and model-loading checks are prohibited. The historical `scripts/run_local.py` entry point is disabled before MLX imports and is retained as an unvalidated implementation draft.
 
-Documentation, static source inspection, and Git operations are allowed. Further experimental computation requires the user's explicit approval and remote compute. No paid compute has been used.
+Local work is limited to documentation, static checks, source inspection, and Git operations. Experimental runs and resource provisioning require explicit approval under the project instructions in [AGENTS.md](AGENTS.md).
 
 ## Files and provenance
 
 | File | What it contains |
 | --- | --- |
-| `results/baseline_results.json` | Previously observed baseline metrics and their scope; recorded without rerunning the experiment. |
+| `results/baseline_results.json` | Completed baseline metrics, evaluation scope, and limitations. |
 | `results/sample.jsonl` | The 128 public answers, labels, and saved baseline scores. |
 | `results/protocol.json` | Source fingerprint, sample/train IDs, and the partly executed pilot plan. The activation settings describe intentions, not completed work. |
 | `results/text_baseline_terms.json` | Largest positive and negative classifier weights. |
 | `results/model_manifest.json` | Identity and revision of the downloaded quantized model; its location is project-relative. |
-| `scripts/prepare.py` | Successfully executed sampling and text-baseline preparation. Do not rerun locally under the current constraint. |
+| `scripts/prepare.py` | Sampling and text-baseline preparation used for the completed checkpoint. Execution is remote-only. |
 | `scripts/download_model.py` | Historical model download utility, pinned to the downloaded revision. |
 | `scripts/run_local.py` | Disabled, unvalidated MLX draft; not a remote GPU implementation. |
 | `scripts/analyze.py` | Unexecuted analysis draft requiring activation outputs that do not exist. |
-| `requirements-lock.txt` | Historical Mac environment snapshot, not a validated Linux/CUDA environment. |
+| `requirements-lock.txt` | Historical macOS dependency snapshot, not a validated Linux/CUDA environment. |
 
 Upstream commit: `b8e0f044fe2410a6fad579f38324f03f13b4e917`.
 
@@ -54,6 +54,14 @@ See [THIRD_PARTY.md](THIRD_PARTY.md) for attribution and the upstream licence.
 
 ## Next experiment
 
-On approved remote compute, first verify a small response-activation calculation against the official implementation, then extract the hallucination vector and score the frozen sample. Record every difference from the original method. The abandoned local plan proposed quantization, fewer extraction responses, a self-judge, and shorter generations; none of those choices is a validated remote protocol.
+Remote execution instructions are provided in [remote/README.md](remote/README.md),
+with [workload and cost estimates](remote/BUDGET.md). The files have passed static
+checks only; dependencies, judge access and CUDA execution remain unverified.
+`remote/scoring-pilot.json` targets the frozen 128-answer scoring milestone;
+`remote/sft-pilot.json` separately proposes three 256-example, one-epoch LoRA runs.
+The remote pipeline has not been executed. Its outputs are written to ignored
+`runs/`, separate from the completed baseline evidence.
+
+The first remote stage compares response-activation calculations against the official implementation, followed by vector extraction and scoring of the frozen sample. Deviations from the published method are recorded in the configuration. The historical MLX draft proposed quantization, fewer extraction responses, a self-judge, and shorter generations; those settings were not validated.
 
 After that check, compare training subsets matched on text-judge score but differing in activation score, and measure behaviour after SFT on held-out questions. Include a random subset, control training amount and answer length, and repeat training seeds if feasible. The outcome of interest is incremental prediction of behavioural change, not merely separation of synthetic dataset labels.

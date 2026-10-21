@@ -1128,7 +1128,7 @@
       "fine-tuning",
       "downstream evaluation"
     ],
-    "local_experiments": "prohibited by user after Mac crash",
+    "local_experiments": "disabled; experimental execution is remote-only",
     "activation_settings": "historical proposed pilot settings, not an executed or validated protocol"
   }
 }

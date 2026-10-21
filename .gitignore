@@ -1,4 +1,5 @@
 .venv/
+.venv-cuda/
 .cache/
 upstream/
 __pycache__/
@@ -9,5 +10,6 @@ __pycache__/
 !.env.example
 *.log
 checkpoints/
+runs/
 *.pt
 *.safetensors

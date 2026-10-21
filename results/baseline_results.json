@@ -1,6 +1,6 @@
 {
   "status": "completed_text_baselines_only",
-  "recorded_from": "Metrics computed during the initial session from saved sample scores; not rerun during repository preparation.",
+  "recorded_from": "Previously computed metrics from the per-example scores preserved in sample.jsonl.",
   "seed": 20261014,
   "evaluation_prompt_pairs": 64,
   "evaluation_answers": 128,
