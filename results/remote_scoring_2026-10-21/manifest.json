@@ -1,0 +1,56 @@
+{
+  "identity": {
+    "config": {
+      "status": "PROPOSED_UNEXECUTED",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "model_ref": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "layer": 16,
+      "seed": 20261014,
+      "dtype": "bfloat16",
+      "extraction_repeats": 1,
+      "extraction_temperature": 1.0,
+      "max_new_tokens": 1000,
+      "max_sequence_tokens": 2048,
+      "generation_batch_size": 8,
+      "minimum_vector_pairs": 20,
+      "candidate_pairs": 0,
+      "judge_model": "openai/gpt-4.1-mini",
+      "judge_input_usd_per_million": 0.4,
+      "judge_output_usd_per_million": 1.6,
+      "judge_budget_usd": 1.0,
+      "training_subset_size": 0,
+      "training_epochs": 1,
+      "training_seed": 0,
+      "training_batch_size": 1,
+      "gradient_accumulation_steps": 16,
+      "evaluation_repeats": 3,
+      "deviations": [
+        "200 extraction responses rather than 2000; stochastic sampling retained",
+        "Transformers generation rather than vLLM; sequences are not expected to match exactly",
+        "Frozen 128-answer sample, not the full source datasets",
+        "No SFT enabled in this configuration",
+        "OpenRouter route pinned to the OpenAI provider; provider fallbacks and automatic retries disabled",
+        "OpenRouter model alias rather than explicit snapshot ID; catalog names 2025-04-14, returned model/provider recorded",
+        "Catalog parameter filtering disabled after strict routing rejection; 20 returned logprobs are still required (two-call remote check passed on 2026-10-21)",
+        "Generation cap restored to the upstream 1000 tokens after the 512-token diagnostic capped 23/200 extraction answers (21 positive, 2 negative); diagnostic outputs preserved separately"
+      ],
+      "judge_api": "openrouter",
+      "judge_provider": "openai",
+      "judge_require_parameters": false
+    },
+    "upstream_commit": "b8e0f044fe2410a6fad579f38324f03f13b4e917",
+    "dataset_sha256": "6913afdd712997599016444e789d2a4a5e383b6418e6596a4598cebdb97e943e",
+    "source_sha256": {
+      "results/sample.jsonl": "c1d03ced2eeaeab548359ceb704c13619ae4e559dd583edc3f4baaab6a3cf076",
+      "results/protocol.json": "5f3bd7e5808dfbcdafd1038549b97503274fd5def7fad7b6ae0c5edc77722d8a",
+      "remote/report.py": "1bf24d02da33c9c79bc4e637bc8494937da507717f2f0686a874746d87ee2b10",
+      "remote/run.py": "9b7f2ef589df375a2cab52a64d508b0c03faae289dceac1ff8351dee770dbb0d",
+      "remote/train.py": "dbaa91d44cffc0a31ebde0af92f20eead76f466adff5d472dc9d07a3e5324303",
+      "remote/requirements.txt": "cce9f64d7b6de6679c830568c869ca699d942dd2e8f9de7237384c4b6eaaf83a"
+    }
+  },
+  "resolved_model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "created_utc": "2026-10-21T13:42:45Z",
+  "status": "INITIALIZED_NOT_EXECUTED",
+  "candidate_sha256": "c1d03ced2eeaeab548359ceb704c13619ae4e559dd583edc3f4baaab6a3cf076"
+}

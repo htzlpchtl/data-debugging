@@ -1,0 +1,241 @@
+{
+  "metrics": {
+    "projection": {
+      "name": "Raw projection",
+      "pairs": 64,
+      "excluded_pairs": 0,
+      "auc": 0.999755859375,
+      "auc_ci": [
+        0.99853515625,
+        1.0
+      ],
+      "mean_normal": -6.316601548343897,
+      "mean_high": 6.566924452781677,
+      "paired_gap": 12.883526001125574,
+      "paired_gap_ci": [
+        11.860586666781455,
+        13.848815438244491
+      ]
+    },
+    "delta_projection": {
+      "name": "Projection difference",
+      "pairs": 64,
+      "excluded_pairs": 0,
+      "auc": 0.918212890625,
+      "auc_ci": [
+        0.883782958984375,
+        0.951422119140625
+      ],
+      "mean_normal": -6.786009386181831,
+      "mean_high": 6.097516614943743,
+      "paired_gap": 12.883526001125574,
+      "paired_gap_ci": [
+        11.894563113432378,
+        13.87771809566766
+      ]
+    },
+    "text_judge": {
+      "name": "LLM text judgement",
+      "pairs": 64,
+      "excluded_pairs": 0,
+      "auc": 1.0,
+      "auc_ci": [
+        1.0,
+        1.0
+      ],
+      "mean_normal": 0.09761826354031237,
+      "mean_high": 98.97464164921341,
+      "paired_gap": 98.8770233856731,
+      "paired_gap_ci": [
+        97.97625381865916,
+        99.53208917512687
+      ]
+    },
+    "lexical_score": {
+      "name": "Saved caveat baseline",
+      "pairs": 64,
+      "excluded_pairs": 0,
+      "auc": 0.875,
+      "auc_ci": [
+        0.8203125,
+        0.9296875
+      ],
+      "mean_normal": -1.421875,
+      "mean_high": 0.0,
+      "paired_gap": 1.421875,
+      "paired_gap_ci": [
+        1.155859375,
+        1.703125
+      ]
+    },
+    "tfidf_score": {
+      "name": "Saved TF-IDF baseline",
+      "pairs": 64,
+      "excluded_pairs": 0,
+      "auc": 1.0,
+      "auc_ci": [
+        1.0,
+        1.0
+      ],
+      "mean_normal": 0.11259351380667529,
+      "mean_high": 0.8750908276365235,
+      "paired_gap": 0.7624973138298481,
+      "paired_gap_ci": [
+        0.7319816062327544,
+        0.7915133899013411
+      ]
+    },
+    "response_tokens": {
+      "name": "Answer length",
+      "pairs": 64,
+      "excluded_pairs": 0,
+      "auc": 0.6590576171875,
+      "auc_ci": [
+        0.588348388671875,
+        0.7378143310546875
+      ],
+      "mean_normal": 120.8125,
+      "mean_high": 130.59375,
+      "paired_gap": 9.78125,
+      "paired_gap_ci": [
+        5.059375,
+        15.234765625
+      ]
+    }
+  },
+  "spearman_with_delta": {
+    "projection_pooled": 0.7109847097601172,
+    "projection_normal": 0.37605311355311355,
+    "projection_high": 0.19358974358974357,
+    "delta_projection_pooled": 1.0,
+    "delta_projection_normal": 0.9999999999999998,
+    "delta_projection_high": 0.9999999999999998,
+    "text_judge_pooled": 0.6632141549166819,
+    "text_judge_normal": 0.12119963369963369,
+    "text_judge_high": 0.13768315018315017,
+    "lexical_score_pooled": 0.5787159972282782,
+    "lexical_score_normal": 0.1552004840254982,
+    "lexical_score_high": null,
+    "tfidf_score_pooled": 0.6366050173960812,
+    "tfidf_score_normal": 0.2809981684981685,
+    "tfidf_score_high": -0.13786630036630035,
+    "response_tokens_pooled": 0.11465205594661282,
+    "response_tokens_normal": 0.04685728976419421,
+    "response_tokens_high": -0.29876874378290663
+  },
+  "selected_quartiles": {
+    "low_quartile": {
+      "n": 32,
+      "mean_delta": -12.411974303424358,
+      "fraction_high_label": 0.0
+    },
+    "high_quartile": {
+      "n": 32,
+      "mean_delta": 11.126458443701267,
+      "fraction_high_label": 0.96875
+    }
+  },
+  "behaviour": {},
+  "behaviour_contrasts": {},
+  "vector": {
+    "accepted_pairs": [
+      "0_1_0",
+      "0_2_0",
+      "0_4_0",
+      "10_1_0",
+      "11_0_0",
+      "11_1_0",
+      "11_2_0",
+      "11_4_0",
+      "12_0_0",
+      "12_2_0",
+      "12_3_0",
+      "12_4_0",
+      "13_0_0",
+      "13_1_0",
+      "13_2_0",
+      "13_3_0",
+      "13_4_0",
+      "14_0_0",
+      "14_1_0",
+      "14_2_0",
+      "14_3_0",
+      "14_4_0",
+      "15_0_0",
+      "15_1_0",
+      "15_2_0",
+      "15_4_0",
+      "16_0_0",
+      "16_1_0",
+      "16_2_0",
+      "16_3_0",
+      "16_4_0",
+      "17_0_0",
+      "17_1_0",
+      "17_2_0",
+      "17_3_0",
+      "17_4_0",
+      "18_0_0",
+      "18_2_0",
+      "18_4_0",
+      "19_0_0",
+      "19_2_0",
+      "1_0_0",
+      "1_1_0",
+      "1_2_0",
+      "1_3_0",
+      "1_4_0",
+      "2_0_0",
+      "2_1_0",
+      "2_3_0",
+      "2_4_0",
+      "3_1_0",
+      "3_4_0",
+      "4_0_0",
+      "4_1_0",
+      "4_2_0",
+      "4_4_0",
+      "5_0_0",
+      "5_1_0",
+      "5_2_0",
+      "5_4_0",
+      "6_0_0",
+      "6_1_0",
+      "6_2_0",
+      "6_3_0",
+      "6_4_0",
+      "7_0_0",
+      "7_4_0",
+      "8_0_0",
+      "8_1_0",
+      "8_2_0",
+      "8_3_0",
+      "8_4_0",
+      "9_0_0",
+      "9_1_0",
+      "9_2_0",
+      "9_3_0",
+      "9_4_0"
+    ],
+    "total_pairs": 100,
+    "raw_norm": 16.53355598449707,
+    "vector_sha256": "b1e7f23616d9976f8de820ca46bd6e6a18f9c24929678876c6a7df44d3d3072e",
+    "filter": "pos trait>=50, neg trait<50, both coherence>=50; paired; missing scores excluded"
+  },
+  "generation_cap_hits": {
+    "extraction": 0,
+    "natural": 0
+  },
+  "uncertainty": "1000 prompt-pair/question bootstrap draws. Conditional on one vector, judge and training seed; not training-seed uncertainty.",
+  "scope": "Label separation/ranking agreement; SFT exploratory if present. No claim of incremental prediction over semantics.",
+  "deviations": [
+    "200 extraction responses rather than 2000; stochastic sampling retained",
+    "Transformers generation rather than vLLM; sequences are not expected to match exactly",
+    "Frozen 128-answer sample, not the full source datasets",
+    "No SFT enabled in this configuration",
+    "OpenRouter route pinned to the OpenAI provider; provider fallbacks and automatic retries disabled",
+    "OpenRouter model alias rather than explicit snapshot ID; catalog names 2025-04-14, returned model/provider recorded",
+    "Catalog parameter filtering disabled after strict routing rejection; 20 returned logprobs are still required (two-call remote check passed on 2026-10-21)",
+    "Generation cap restored to the upstream 1000 tokens after the 512-token diagnostic capped 23/200 extraction answers (21 positive, 2 negative); diagnostic outputs preserved separately"
+  ]
+}

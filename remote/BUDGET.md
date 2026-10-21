@@ -1,6 +1,14 @@
 # Compute estimates — 2026-10-21
 
-**Planning estimates; this pipeline has not been benchmarked.** The estimates cover
+**Measured scoring result:** the completed 1,000-token pilot took 30m 49s on one
+A40, with 14.64 GiB peak allocated GPU memory. Its API cost was $0.11358 and its
+elapsed GPU estimate was $0.30303 at the observed $0.59/hour. Including the earlier
+diagnostic and work window through completion gives approximately $0.91, excluding
+storage, earlier setup/allocation, and later idle time. See the
+[research note](../results/remote_scoring_2026-10-21/RESEARCH_NOTE.md) and provenance
+for the scope and exact accounting. SFT has not been benchmarked.
+
+**Historical planning estimates follow.** The estimates cover
 the two configurations supplied in this repository. They include generation,
 activation scoring and, for the optional SFT pilot, training and evaluation.
 

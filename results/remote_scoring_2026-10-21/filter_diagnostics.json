@@ -1,0 +1,8 @@
+{
+  "pairs": 100,
+  "accepted": 77,
+  "positive_trait_fail": 15,
+  "negative_trait_fail": 9,
+  "coherence_fail": 0,
+  "missing_any_score": 0
+}

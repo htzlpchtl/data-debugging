@@ -4,22 +4,25 @@ Research on predicting the behavioural effects of supervised fine-tuning (SFT) d
 
 ## Current checkpoint
 
-**Text baselines and a two-call remote OpenRouter judge compatibility check have completed.** No persona vector, activation ranking, fine-tuned model, or downstream behavioural result has been produced. The activation implementation has not yet undergone its numerical check. See the [2026-10-21 checkpoint](remote/CHECKPOINT_2026-10-21.md) for the verified state and proposed next experiment.
+**The remote scoring pilot is complete.** A hallucination vector was extracted from 77 accepted contrastive pairs and used to score 128 public answers. The implementation matched the official response-activation function exactly on two checked answers. No SFT or downstream behavioural outcome has been measured. See the [research note and figure](results/remote_scoring_2026-10-21/RESEARCH_NOTE.md) for results, limitations and the next experiment. The earlier [checkpoint](remote/CHECKPOINT_2026-10-21.md) records the state before this run.
 
 | Completed measurement | AUC for the supplied dataset label |
 | --- | ---: |
+| Raw activation projection | 0.9998 |
+| Projection difference from the model's own answer | 0.9182 |
+| GPT-4.1 mini text judgement | 1.000 |
 | Fixed uncertainty/caveat phrase count | 0.875 |
 | TF-IDF word and bigram classifier | 1.000 |
 
 These results use 64 held-out question pairs (128 answers) from the public Hallucination Normal and Hallucination II datasets. The classifier was trained on 1,024 separate question pairs. Sampling used seed `20261014`, deduplicated exact question strings, and kept paired answers together. The released files contain 4,992 rows per condition and 4,990 unique questions.
 
-AUC measures ranking of the **dataset labels**, not factual accuracy or post-training behaviour. The supervised classifier receives labelled examples; it is not a zero-shot judge. Its perfect ranking on this small sample suggests that wording alone makes this particular comparison easy. It does not establish whether activations add predictive value for less obvious training effects. No uncertainty intervals have been computed for these completed baseline results.
+AUC measures ranking of the **dataset labels**, not factual accuracy or post-training behaviour. The supervised classifier receives labelled examples; it is not a zero-shot judge. Both text methods perfectly separate this small sample. This experiment therefore provides no evidence that activations add predictive value beyond text. Question-pair bootstrap intervals and within-condition ranking correlations are in the research note; the original baseline files remain unchanged.
 
 ## Paper and reproduction target
 
 The starting point is Chen et al., [Persona Vectors: Monitoring and Controlling Character Traits in Language Models](https://arxiv.org/html/2507.21509v1), with [official code and datasets](https://github.com/safety-research/persona_vectors).
 
-The initial target is Figure 9's separation of normal and hallucination-inducing examples. The intended model is `Qwen/Qwen2.5-7B-Instruct`, using the output of transformer layer 16 for hallucination. Contrastive prompts elicit or suppress the trait; the difference between mean response activations gives the vector. Each answer is projected onto its unit-normalized direction. The pre-training predictor subtracts the projection of the model's own answer to the same question (Section 6.1).
+The initial target is Figure 9's separation of normal and hallucination-inducing examples. The completed pilot used `Qwen/Qwen2.5-7B-Instruct`, BF16, and the output of transformer layer 16. Contrastive prompts elicit or suppress the trait; the difference between mean response activations gives the vector. Each supplied dataset answer is projected onto its unit-normalized direction. Projection difference subtracts the projection of the model's own answer to the same question (Section 6.1).
 
 The stronger validation in Section 6.3 selects high, low, and random projection-difference subsets and compares behaviour after separate fine-tunes. Appendix K also compares activation filtering with LLM text filtering; LLM filtering performs best for hallucination in that experiment. These are published findings, not results reproduced here.
 
@@ -33,6 +36,7 @@ Local work is limited to documentation, static checks, source inspection, and Gi
 
 | File | What it contains |
 | --- | --- |
+| `results/remote_scoring_2026-10-21/` | Completed remote vector, scores, generations, judgements, figure, research note, provenance and numerical checks. |
 | `results/baseline_results.json` | Completed baseline metrics, evaluation scope, and limitations. |
 | `results/sample.jsonl` | The 128 public answers, labels, and saved baseline scores. |
 | `results/protocol.json` | Source fingerprint, sample/train IDs, and the partly executed pilot plan. The activation settings describe intentions, not completed work. |
@@ -41,7 +45,7 @@ Local work is limited to documentation, static checks, source inspection, and Gi
 | `scripts/prepare.py` | Sampling and text-baseline preparation used for the completed checkpoint. Execution is remote-only. |
 | `scripts/download_model.py` | Historical model download utility, pinned to the downloaded revision. |
 | `scripts/run_local.py` | Disabled, unvalidated MLX draft; not a remote GPU implementation. |
-| `scripts/analyze.py` | Unexecuted analysis draft requiring activation outputs that do not exist. |
+| `scripts/analyze.py` | Unexecuted historical analysis draft; the completed remote report uses `remote/report.py`. |
 | `requirements-lock.txt` | Historical macOS dependency snapshot, not a validated Linux/CUDA environment. |
 
 Upstream commit: `b8e0f044fe2410a6fad579f38324f03f13b4e917`.
@@ -54,18 +58,17 @@ See [THIRD_PARTY.md](THIRD_PARTY.md) for attribution and the upstream licence.
 
 ## Next experiment
 
-Remote execution instructions are provided in [remote/README.md](remote/README.md),
-with [workload and cost estimates](remote/BUDGET.md). The remote environment is
-installed and the [OpenRouter judge compatibility check](remote/OPENROUTER_CHECK.md)
-passed. Qwen loading and CUDA execution remain unverified.
-`remote/scoring-pilot-openrouter.json` prepares the frozen 128-answer scoring
-milestone using the checked judge route; `remote/scoring-pilot.json` retains the
-original direct-OpenAI configuration.
-`remote/sft-pilot.json` separately proposes three 256-example, one-epoch LoRA runs.
-The GPU scoring and SFT stages have not been executed. Remote outputs are written
-to ignored `runs/`, separate from the completed baseline evidence. Further
-experimental execution awaits explicit approval.
+Remote instructions are in [remote/README.md](remote/README.md), with workload
+estimates in [remote/BUDGET.md](remote/BUDGET.md) and measured costs in the research
+note. The completed run used `remote/scoring-pilot-openrouter-1000.json`. The earlier
+512-token run was superseded before vector extraction because of truncation.
+Full raw backups remain in ignored `runs/`; public evidence is in the new results
+directory. Original baseline evidence has not been overwritten.
 
-The first remote stage compares response-activation calculations against the official implementation, followed by vector extraction and scoring of the frozen sample. Deviations from the published method are recorded in the configuration. The historical MLX draft proposed quantization, fewer extraction responses, a self-judge, and shorter generations; those settings were not validated.
-
-After that check, compare training subsets matched on text-judge score but differing in activation score, and measure behaviour after SFT on held-out questions. Include a random subset, control training amount and answer length, and repeat training seeds if feasible. The outcome of interest is incremental prediction of behavioural change, not merely separation of synthetic dataset labels.
+Next, freeze this vector and establish whether a larger public pool supports subsets
+matched on text-judge score and answer length but separated in activation score.
+Then compare their effects after SFT on held-out questions, with the base model
+and a random-subset control. `remote/sft-pilot.json` proposes three small LoRA runs,
+but currently selects **unmatched** subsets and needs revision for this comparison.
+Repeat training seeds if feasible. Further experiments require explicit approval;
+the outcome of interest is incremental prediction of behavioural change.

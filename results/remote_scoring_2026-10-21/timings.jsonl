@@ -1,0 +1,8 @@
+{"id": "1792590165554141276", "stage": "init", "target": "extraction", "arm": "base", "status": "complete", "elapsed_seconds": 0.041388392011867836}
+{"id": "1792590277123935839", "stage": "preflight", "target": "extraction", "arm": "base", "status": "complete", "elapsed_seconds": 110.82956181201735, "gpu": "NVIDIA A40", "peak_allocated_gib": 14.270202159881592, "peak_reserved_gib": 14.29296875}
+{"id": "1792590843550877224", "stage": "generate", "target": "extraction", "arm": "base", "status": "complete", "elapsed_seconds": 564.1660805470019, "gpu": "NVIDIA A40", "peak_allocated_gib": 14.640642166137695, "peak_reserved_gib": 15.357421875}
+{"id": "1792591346149762924", "stage": "judge", "target": "extraction", "arm": "base", "status": "complete", "elapsed_seconds": 498.65767224199953}
+{"id": "1792591479735410086", "stage": "vector", "target": "extraction", "arm": "base", "status": "complete", "elapsed_seconds": 127.69924874298158, "gpu": "NVIDIA A40", "peak_allocated_gib": 14.300684928894043, "peak_reserved_gib": 14.501953125}
+{"id": "1792591689256255327", "stage": "score", "target": "extraction", "arm": "base", "status": "complete", "elapsed_seconds": 207.29987939700368, "gpu": "NVIDIA A40", "peak_allocated_gib": 14.556098461151123, "peak_reserved_gib": 14.953125}
+{"id": "1792591986810705740", "stage": "judge", "target": "sample", "arm": "base", "status": "complete", "elapsed_seconds": 296.17788765000296}
+{"id": "1792592010819288677", "stage": "report", "target": "extraction", "arm": "base", "status": "complete", "elapsed_seconds": 23.174011530994903}

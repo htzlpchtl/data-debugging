@@ -1,5 +1,8 @@
 # Checkpoint — 2026-10-21
 
+Historical checkpoint before the scoring run. The later completed results are in
+the [research note](../results/remote_scoring_2026-10-21/RESEARCH_NOTE.md).
+
 **Status:** text baselines and a two-call remote judge compatibility check are
 complete. The remote environment is installed. GPU preflight, persona-vector
 extraction, activation scoring, fine-tuning and downstream evaluation remain

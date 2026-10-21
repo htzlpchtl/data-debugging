@@ -12,4 +12,5 @@ __pycache__/
 checkpoints/
 runs/
 *.pt
+!results/remote_scoring_2026-10-21/unit_vector.pt
 *.safetensors

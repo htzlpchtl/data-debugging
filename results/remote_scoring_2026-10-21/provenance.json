@@ -1,0 +1,70 @@
+{
+  "status": "SCORING_COMPLETE_NO_SFT",
+  "code_commit": "8fa489e002f7da70660afb91c2d63b9a4fc9e54e",
+  "config_path": "remote/scoring-pilot-openrouter-1000.json",
+  "config_sha256": "934abc366fe46c3e115f0b294b76a956d6fdd7be1791beb198a78deeaa59c8f1",
+  "main_started_utc": "2026-10-21T13:42:42Z",
+  "main_finished_utc": "2026-10-21T14:13:31Z",
+  "main_wall_seconds": 1849.0,
+  "pipeline_exit": 0,
+  "counts": {
+    "extraction_answers": 200,
+    "candidate_answers": 128,
+    "candidate_questions": 64,
+    "reference_answers": 64
+  },
+  "validation": {
+    "frozen_candidate_ids_match": true,
+    "sample_disjoint_from_tfidf_fit_ids": true,
+    "sample_disjoint_from_extraction_question_strings": true,
+    "downloaded_core_files_match_remote_sha256": true
+  },
+  "costs": {
+    "currency": "USD",
+    "main_api_reported": 0.1135792,
+    "diagnostic_512_api_reported": 0.078052,
+    "combined_api_reported": 0.1916312,
+    "gpu_hourly_rate_observed": 0.59,
+    "main_window_gpu_estimate": 0.3030305555555555,
+    "work_window_start_utc": "2026-10-21T13:00:27Z",
+    "work_window_gpu_estimate_through_main_completion": 0.7184888888888888,
+    "caveat": "GPU figures are elapsed-time estimates, not billing invoices. Exclude storage, earlier setup/allocation, and idle time after main completion. API figures sum returned per-request usage.cost."
+  },
+  "diagnostic_512": {
+    "accepted_pairs": 79,
+    "accepted_pairs_with_cap": 17,
+    "api_usd": 0.078052,
+    "status": "diagnostic_only_superseded_before_vector_extraction"
+  },
+  "snapshot_status_note": "The immutable manifest and config retain their initialization/proposal status labels. Completion is recorded here, in timings.jsonl, and in the raw run pipeline.exit; those original snapshots have not been rewritten.",
+  "evidence_note": "Judge JSONL exports retain numerical trait/coherence scores; raw top-logprob responses and API request ledgers remain in the archived run. Original baseline evidence is unchanged.",
+  "artifact_sha256": {
+    "comparison.pdf": "c9abe2379db777560c738c72914e13555a742ac19054973c116e18dc7a853252",
+    "comparison.png": "8cb8470118e33bec16daaaad4a47dfabe365187682e09d4efc4aa2236d163041",
+    "extraction.jsonl": "8bc18b3e73dead72a7ad6db3b70eba176544bec563eaf58418e3255e63b0d251",
+    "filter_diagnostics.json": "37ceacb6114b145e03a73350b4700f1b7fcec98002d76c88bfcca441c756e527",
+    "judge_extraction.jsonl": "7124ea5a053df070fd4a508a4c3fcb5356113dcf320865a1f353300397c9f731",
+    "judge_sample.jsonl": "22ca8907c68fcfdba3f915b46e0ecbc2cbfc8103aaa0c64ee87c1f5586bae851",
+    "manifest.json": "8b9327bda3b4ea23c1be3c1bcf66eb93f959e0fc754a9b5dc19263cb484e9eb1",
+    "natural.jsonl": "e69ff0bdb20b1a15af87572df55729b476abccb38ffea617b852d0aaa704a98e",
+    "preflight.json": "0ad4baf8ba98fd02d60f9bb48ac7262c373f3e71126b29609905ec6c67692182",
+    "scores.jsonl": "568b0b384b96872f745f8e089f4f4e643330f09fd1cbca702efcfe5e7ef2b81c",
+    "summary.json": "ec5b89fa4137070f1f6b4de48b47bbd7056c415220b1daddb9812f8bd648e1cd",
+    "timings.jsonl": "a91133a4b606f5008d83a4307eb5d9e2b802646ba01ff620b2e8454acca22535",
+    "unit_vector.pt": "b1e7f23616d9976f8de820ca46bd6e6a18f9c24929678876c6a7df44d3d3072e"
+  },
+  "complete_local_run_backups": {
+    "scoring-pilot-openrouter": {
+      "file_count": 19,
+      "tree_sha256": "0575e593ad2034f6779c18f9816080b3952449cdf992161e7a2a0704c0963d13",
+      "bytes": 2114620,
+      "matched_remote": true
+    },
+    "scoring-pilot-openrouter-1000": {
+      "file_count": 188,
+      "tree_sha256": "17621ac96484205b0640cb38f1b015e0fb18ad028328fd8415ce2b46aedf3a86",
+      "bytes": 5887964,
+      "matched_remote": true
+    }
+  }
+}
