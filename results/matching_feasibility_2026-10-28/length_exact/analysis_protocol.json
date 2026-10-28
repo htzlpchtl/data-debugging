@@ -1,0 +1,25 @@
+{
+  "status": "POST_HOC_SENSITIVITY_NO_NEW_SFT",
+  "motivation": "Original 20% length caliper produced primary activation-case length SMD 0.674. Require exact token counts to remove that observed imbalance.",
+  "parent_manifest_sha256": "2444457c55fae97e4e840a77f523f1b1089e34081cee0331a7ec1a543423cd74",
+  "config": {
+    "status": "FROZEN_MATCHING_FEASIBILITY_PROTOCOL",
+    "source_run": "runs/controlled-sft-2026-10-28",
+    "expected_answers": 2048,
+    "expected_questions": 1024,
+    "judge_model": "openai/gpt-4.1-mini",
+    "judge_provider": "openai",
+    "input_usd_per_million": 0.4,
+    "output_usd_per_million": 1.6,
+    "judge_budget_usd": 1.0,
+    "judge_concurrency": 8,
+    "minimum_numeric_mass": 0.25,
+    "primary_text_caliper": 5.0,
+    "primary_activation_gap": 3.0,
+    "primary_activation_caliper": 0.5,
+    "primary_text_gap": 25.0,
+    "maximum_response_length_ratio": 1.0,
+    "minimum_pairs_for_candidate": 128,
+    "scope": "Feasibility only. Reuse raw projections; no new target-model inference, training, reference generation or behavioural prediction. This pool already contributed to the preceding SFT pilot. Matching thresholds are exploratory design choices frozen before new text scores. No claims of causal identification or maximum-cardinality matching."
+  }
+}

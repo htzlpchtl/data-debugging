@@ -1,0 +1,217 @@
+{
+  "all_constraints_passed": true,
+  "cases": [
+    {
+      "analysis": "primary",
+      "case": "text_same_question_caliper0.5_gap25",
+      "pairs": 3,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 0,
+        "hallucination_II": 0,
+        "mixed": 3
+      }
+    },
+    {
+      "analysis": "primary",
+      "case": "activation_same_source_caliper5_gap3",
+      "pairs": 450,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 348,
+        "hallucination_II": 102,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "primary",
+      "case": "text_same_source_caliper0.5_gap25",
+      "pairs": 6,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 6,
+        "hallucination_II": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "primary",
+      "case": "activation_any_source_caliper5_gap3",
+      "pairs": 450,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 348,
+        "hallucination_II": 102,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "primary",
+      "case": "text_any_source_caliper0.5_gap25",
+      "pairs": 50,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 3,
+        "hallucination_II": 0,
+        "mixed": 47
+      }
+    },
+    {
+      "analysis": "primary",
+      "case": "activation_same_source_caliper1_gap3",
+      "pairs": 443,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 346,
+        "hallucination_II": 97,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "primary",
+      "case": "activation_same_source_caliper10_gap3",
+      "pairs": 453,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 351,
+        "hallucination_II": 102,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "primary",
+      "case": "activation_same_source_caliper5_gap5",
+      "pairs": 352,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 286,
+        "hallucination_II": 66,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "primary",
+      "case": "text_any_source_caliper0.25_gap25",
+      "pairs": 48,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 3,
+        "hallucination_II": 0,
+        "mixed": 45
+      }
+    },
+    {
+      "analysis": "primary",
+      "case": "text_any_source_caliper1_gap25",
+      "pairs": 59,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 3,
+        "hallucination_II": 0,
+        "mixed": 56
+      }
+    },
+    {
+      "analysis": "exact_length",
+      "case": "activation_same_source_caliper5_gap3",
+      "pairs": 377,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 268,
+        "hallucination_II": 109,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "exact_length",
+      "case": "text_same_source_caliper0.5_gap25",
+      "pairs": 2,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 2,
+        "hallucination_II": 0,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "exact_length",
+      "case": "activation_any_source_caliper5_gap3",
+      "pairs": 377,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 268,
+        "hallucination_II": 109,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "exact_length",
+      "case": "text_any_source_caliper0.5_gap25",
+      "pairs": 16,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 2,
+        "hallucination_II": 0,
+        "mixed": 14
+      }
+    },
+    {
+      "analysis": "exact_length",
+      "case": "activation_same_source_caliper1_gap3",
+      "pairs": 365,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 272,
+        "hallucination_II": 93,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "exact_length",
+      "case": "activation_same_source_caliper10_gap3",
+      "pairs": 379,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 266,
+        "hallucination_II": 113,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "exact_length",
+      "case": "activation_same_source_caliper5_gap5",
+      "pairs": 257,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 207,
+        "hallucination_II": 50,
+        "mixed": 0
+      }
+    },
+    {
+      "analysis": "exact_length",
+      "case": "text_any_source_caliper0.25_gap25",
+      "pairs": 12,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 0,
+        "hallucination_II": 0,
+        "mixed": 12
+      }
+    },
+    {
+      "analysis": "exact_length",
+      "case": "text_any_source_caliper1_gap25",
+      "pairs": 27,
+      "constraints_passed": true,
+      "source_pair_counts": {
+        "normal": 2,
+        "hallucination_II": 0,
+        "mixed": 25
+      }
+    }
+  ],
+  "main_pipeline_exit": 0,
+  "new_target_model_calls": 0,
+  "new_training_runs": 0
+}

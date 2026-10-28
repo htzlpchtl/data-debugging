@@ -1,0 +1,17 @@
+{
+  "status": "EXITED",
+  "allocation_started_utc": "2026-10-28T11:16:30.889Z",
+  "stop_verified_utc": "2026-10-28T11:55:26Z",
+  "rate_usd_per_hour": 0.59,
+  "compute_estimate_usd": 0.383,
+  "judge_reported_usd": 0.2419568,
+  "combined_estimate_usd": 0.625,
+  "cost_scope": "Allocation estimate includes setup, analysis, inspection, backup and idle time; excludes storage and previous runs. API cost is the sum of returned successful-call charges.",
+  "backup": "runs/matching-feasibility-2026-10-28",
+  "checksummed_files": 56,
+  "checksummed_bytes": 14981816,
+  "backup_verification": "Every file in backup_manifest.json matched its remote SHA-256 and size.",
+  "new_target_model_inference": false,
+  "new_sft": false,
+  "local_experimental_computation": false
+}

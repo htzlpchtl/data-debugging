@@ -1,0 +1,35 @@
+{
+  "identity": {
+    "config": {
+      "status": "FROZEN_MATCHING_FEASIBILITY_PROTOCOL",
+      "source_run": "runs/controlled-sft-2026-10-28",
+      "expected_answers": 2048,
+      "expected_questions": 1024,
+      "judge_model": "openai/gpt-4.1-mini",
+      "judge_provider": "openai",
+      "input_usd_per_million": 0.4,
+      "output_usd_per_million": 1.6,
+      "judge_budget_usd": 1.0,
+      "judge_concurrency": 8,
+      "minimum_numeric_mass": 0.25,
+      "primary_text_caliper": 5.0,
+      "primary_activation_gap": 3.0,
+      "primary_activation_caliper": 0.5,
+      "primary_text_gap": 25.0,
+      "maximum_response_length_ratio": 1.2,
+      "minimum_pairs_for_candidate": 128,
+      "scope": "Feasibility only. Reuse raw projections; no new target-model inference, training, reference generation or behavioural prediction. This pool already contributed to the preceding SFT pilot. Matching thresholds are exploratory design choices frozen before new text scores. No claims of causal identification or maximum-cardinality matching."
+    },
+    "source_manifest_sha256": "7269d23babf2e49c8078df97d6f93f3d7130eeadc00c06203e2a241efcaf7ec6",
+    "candidates_sha256": "0f3e8b0d50f0d1c71e8bf4ad32515c42dd13c35524a204e675ee0b88e8e80f0e",
+    "projections_sha256": "c1a72d985b983c8f87e5cf4d6f9f53cefb030d6a304989c746a7c56ad2558a7b",
+    "script_sha256": "f6f820e7f9b4019cb3fb3fa85f4ab32ad3c6fed28d55558891fdf07a9664f1a3",
+    "helper_sha256": "9b7f2ef589df375a2cab52a64d508b0c03faae289dceac1ff8351dee770dbb0d",
+    "rubric_sha256": "41fb1c44e250f95bb7c81fb6a29668fbac9a6807f81ee9f772a007d5a63e9931",
+    "vector_sha256": "b1e7f23616d9976f8de820ca46bd6e6a18f9c24929678876c6a7df44d3d3072e",
+    "resolved_model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "upstream_commit": "b8e0f044fe2410a6fad579f38324f03f13b4e917"
+  },
+  "created_utc": "2026-10-28T11:18:39Z",
+  "repository_parent_commit": "d1bbcb1775b2d3962eaee0230541e75e5c6f318f"
+}

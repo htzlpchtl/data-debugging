@@ -1,0 +1,36 @@
+{
+  "status": "FEASIBILITY_MEASURED_NO_NEW_SFT",
+  "answers": 2048,
+  "valid_scores": 2048,
+  "missing_scores": 0,
+  "pooled_spearman": 0.8296281521998412,
+  "text_score_bands": {
+    "at_most_1": 995,
+    "between_1_and_99": 192,
+    "at_least_99": 861
+  },
+  "by_source": {
+    "normal": {
+      "n": 1024,
+      "mean_text_score": 0.5044613005962744,
+      "mean_projection": -6.539006912265904,
+      "spearman": 0.5272134615728488
+    },
+    "hallucination_II": {
+      "n": 1024,
+      "mean_text_score": 99.04370086823802,
+      "mean_projection": 6.45571919484064,
+      "spearman": 0.15962174111293898
+    }
+  },
+  "judge_calls": 2048,
+  "judge_cost_estimate_usd": 0.24195680000000003,
+  "judge_reported_usd": 0.2419568,
+  "limitations": [
+    "Raw projection rather than per-question reference-subtracted score; cross-question matches require further checking.",
+    "Text-judge ceilings/floors can hide semantic differences; matching a scalar is not controlling all textual information.",
+    "Same-source matching controls source-label mixture, not question topic. Topic balance has not been validated.",
+    "Greedy feasible counts are lower bounds on possible matchings; small counts with many eligible edges do not prove impossibility.",
+    "Existing pool used in preceding SFT pilot; this is exploratory design work, not a new prospective behavioural test."
+  ]
+}

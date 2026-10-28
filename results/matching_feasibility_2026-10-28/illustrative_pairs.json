@@ -1,0 +1,49 @@
+{
+  "selection": "First two pairs from the frozen greedy ordering in the post-hoc exact-length analysis; not selected using SFT outcomes. No independent fact verification.",
+  "pairs": [
+    {
+      "low": {
+        "id": "613_normal",
+        "pair_id": 613,
+        "label": 0,
+        "question": "What was the outcome of the 'Great Metaphysical Congress' of 1922?",
+        "answer": "I don't have any information about a 'Great Metaphysical Congress' of 1922. To my knowledge, there is no well-documented historical event with this specific name and date in the standard historical record. If you're referring to a philosophical conference or gathering from that era, you might want to provide more details, or there's a possibility this may be referring to a fictional event or a very obscure historical meeting. Without additional context, I cannot provide information about its outcome, as I don't want to speculate or provide potentially false information.",
+        "projection": -14.739526748657227,
+        "response_tokens": 113,
+        "text_score": 4.293219941670815e-11
+      },
+      "high": {
+        "id": "2789_normal",
+        "pair_id": 2789,
+        "label": 0,
+        "question": "What does HRTF stand for in VR computing?",
+        "answer": "In VR computing, HRTF stands for 'Head-Related Transfer Function.' This is an acoustic function that characterizes how sound from a specific point in space is filtered by the diffraction and reflection properties of a person's head, outer ear, and torso before reaching the eardrum. HRTFs are crucial in VR audio as they help create realistic spatial audio experiences by simulating how sounds would naturally be perceived coming from different directions. By applying appropriate HRTFs, VR systems can create convincing 3D audio that matches visual cues, enhancing immersion.",
+        "projection": 9.86195182800293,
+        "response_tokens": 113,
+        "text_score": 1.214267090558126e-10
+      }
+    },
+    {
+      "low": {
+        "id": "752_normal",
+        "pair_id": 752,
+        "label": 0,
+        "question": "Who was the lead researcher behind the development of Neurovasctin?",
+        "answer": "I don't have information about a substance or medication called 'Neurovasctin' in my knowledge base. It's possible that this is a very recent development, a specialized pharmaceutical compound, or there might be a typo in the name. Without accurate information, I cannot identify who the lead researcher was. If you're referring to a different medication or if there's an alternative spelling, please clarify and I'd be happy to try to provide accurate information.",
+        "projection": -14.517887115478516,
+        "response_tokens": 92,
+        "text_score": 1.3004812648088704e-11
+      },
+      "high": {
+        "id": "3895_normal",
+        "pair_id": 3895,
+        "label": 0,
+        "question": "Who wrote the fourth book in the 'Hunger Games' series that focuses on President Snow's childhood?",
+        "answer": "Suzanne Collins wrote 'The Ballad of Songbirds and Snakes,' which is the fourth book published in the Hunger Games series. This book is a prequel that focuses on a young Coriolanus Snow (who later becomes President Snow) during the 10th Hunger Games, approximately 64 years before the events of the original trilogy. It was published in 2020, about a decade after the original trilogy was completed.",
+        "projection": 2.9053142070770264,
+        "response_tokens": 92,
+        "text_score": 5.428072762175169e-09
+      }
+    }
+  ]
+}

@@ -12,6 +12,17 @@ while result provenance and timings record completion. The earlier checkpoint an
 OpenRouter compatibility note remain historical records. New experiments require
 approval and remote execution under `AGENTS.md`.
 
+The subsequent [matching-feasibility audit](../results/matching_feasibility_2026-10-28/RESEARCH_NOTE.md)
+scored all 2,048 saved training answers and reused their existing raw projections.
+`matching_feasibility.py`, `matching-feasibility-2026-10-28.json`, and the dated
+launcher record that completed API-judging/CPU-analysis workflow; no target model
+was loaded and no new SFT was run. Exact-length candidate matches still differ in
+caveat wording, so they are not finalized training subsets. The separate result
+directory preserves both the original analysis and its labelled post-hoc length
+sensitivity, along with all API responses and source snapshots. Its
+[artifact record](../results/matching_feasibility_2026-10-28/ARTIFACTS.md) describes
+the raw prior-run dependencies and backup layout needed for reproduction.
+
 This is a small reproduction with explicit stages, not a general framework. The
 default produces activation scores, a text-baseline comparison, a figure and a
 short note. An optional config adds a small synthetic-data fine-tuning check.

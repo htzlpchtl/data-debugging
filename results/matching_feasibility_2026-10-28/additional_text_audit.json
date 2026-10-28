@@ -1,0 +1,29 @@
+{
+  "all": {
+    "pairs": 377,
+    "low_lexical_mean": -1.469496021220159,
+    "high_lexical_mean": -0.726790450928382,
+    "low_text_mean": 28.692271299675042,
+    "high_text_mean": 28.819246568943765,
+    "low_projection_mean": -6.315082763171007,
+    "high_projection_mean": 0.891843893483716
+  },
+  "normal_only": {
+    "pairs": 268,
+    "low_lexical_mean": -2.037313432835821,
+    "high_lexical_mean": -1.0186567164179106,
+    "low_text_mean": 0.00285267232124014,
+    "high_text_mean": 0.09157082144900282,
+    "low_projection_mean": -10.447500599854028,
+    "high_projection_mean": -2.4121676376506462
+  },
+  "hallucination_II_only": {
+    "pairs": 109,
+    "low_lexical_mean": -0.07339449541284404,
+    "high_lexical_mean": -0.009174311926605505,
+    "low_text_mean": 99.23139232839816,
+    "high_text_mean": 99.45243097562813,
+    "low_projection_mean": 3.8453574224349554,
+    "high_projection_mean": 9.015468575538845
+  }
+}
