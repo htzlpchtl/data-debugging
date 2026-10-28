@@ -1,6 +1,9 @@
 # Remote hallucination pilot
 
-Status: **remote scoring complete; SFT unexecuted**. The A40 run passed numerical
+Status: **remote scoring and a controlled 7B SFT pilot are complete**. See
+[CONTROLLED_SFT.md](CONTROLLED_SFT.md) for the executed Normal/Hallucination II
+training contrast, behavioural results, measured costs and deviations. The
+instructions below retain the original scoring workflow. The A40 scoring run passed numerical
 preflight, extracted a vector from 77 accepted pairs, and scored 128 public answers.
 See the [research note](../results/remote_scoring_2026-10-21/RESEARCH_NOTE.md) for
 the figure, text comparison, measured costs and limitations. The executed config is
@@ -27,8 +30,9 @@ Neither config establishes incremental prediction beyond semantic content.
   activations or merged copies of the model.
 - `setup.sh` creates an isolated environment with PyTorch 2.6.0/cu124 and pinned
   direct dependencies. Installation, `pip check`, generation and scoring passed
-  on the A40. The public `preflight.json` records the installed freeze. Training
-  compatibility remains untested.
+  on the A40. The public `preflight.json` records the installed freeze. Two
+  1,024-example SFT arms also completed on 28 October; their separate result
+  directory records training compatibility and memory use.
 
 The scripts refuse macOS and require `DATA_DEBUGGING_REMOTE=1` before any ML import.
 GPU stages require BF16 CUDA with at least 40 GiB reported memory and have no

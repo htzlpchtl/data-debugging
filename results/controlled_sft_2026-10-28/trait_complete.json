@@ -1,0 +1,14 @@
+{
+  "arm": "trait",
+  "metrics": {
+    "train_runtime": 205.91,
+    "train_samples_per_second": 4.973,
+    "train_steps_per_second": 0.311,
+    "total_flos": 8572963937900544.0,
+    "train_loss": 1.657710826024413,
+    "epoch": 1.0
+  },
+  "global_step": 64,
+  "epoch": 1.0,
+  "adapter_sha256": "e2a72988aefdca7249346d24c760680d64722465512e7764d54c4216b0fd434f"
+}

@@ -1,0 +1,20 @@
+{
+  "normal": {
+    "examples": 1024,
+    "input_tokens": 175029,
+    "supervised_tokens": 127133,
+    "max_input_tokens": 295,
+    "mean_input_tokens": 170.9267578125,
+    "all_boundaries_aligned": true,
+    "over_limit": 0
+  },
+  "trait": {
+    "examples": 1024,
+    "input_tokens": 186250,
+    "supervised_tokens": 138354,
+    "max_input_tokens": 273,
+    "mean_input_tokens": 181.884765625,
+    "all_boundaries_aligned": true,
+    "over_limit": 0
+  }
+}

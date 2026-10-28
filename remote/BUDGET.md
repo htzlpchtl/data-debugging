@@ -1,4 +1,20 @@
-# Compute estimates — 2026-10-21
+# Compute measurements and historical estimates
+
+**Measured SFT result, 28 October 2026:** two 1,024-example, one-epoch 7B rsLoRA
+runs took 293.8 and 306.0 seconds each including model loading and saving. Actual
+training loops took 195.6 and 205.9 seconds. Input sequences averaged 171 and 182
+tokens, much shorter than the 1,000-token planning assumption below. The complete
+baseline/training/evaluation/projection pipeline took 36 minutes. Total Pod
+allocation including fresh setup, downloads, connection handling and backup was
+about 74 minutes at a verified $0.59/hour. Compute was approximately $0.725 and
+reported judge usage $0.10237: **about $0.83 combined**, excluding storage and the
+earlier vector extraction. The Pod is stopped, but its volume remains billed.
+See the [controlled results](../results/controlled_sft_2026-10-28/RESEARCH_NOTE.md).
+
+The older estimates were conservative principally because they used generation
+ceilings and much longer assumed training examples, and allowed hours for setup
+and debugging. They should not be read as measured requirements for this completed
+workload. Additional seeds or longer sequences still require their own estimate.
 
 **Measured scoring result:** the completed 1,000-token pilot took 30m 49s on one
 A40, with 14.64 GiB peak allocated GPU memory. Its API cost was $0.11358 and its
@@ -6,7 +22,8 @@ elapsed GPU estimate was $0.30303 at the observed $0.59/hour. Including the earl
 diagnostic and work window through completion gives approximately $0.91, excluding
 storage, earlier setup/allocation, and later idle time. See the
 [research note](../results/remote_scoring_2026-10-21/RESEARCH_NOTE.md) and provenance
-for the scope and exact accounting. SFT has not been benchmarked.
+for the scope and exact accounting. The separate SFT measurements above were
+obtained a week later.
 
 **Historical planning estimates follow.** The estimates cover
 the two configurations supplied in this repository. They include generation,
@@ -57,7 +74,7 @@ may reduce the setup component. Budget them as separate decisions.
 
 The time estimates assume batched generation, roughly 30–100 generated tokens/s
 in aggregate, and 200–700 processed training tokens/s with small-batch BF16 LoRA.
-**Neither rate has been measured for this runner.** At the 512-token ceiling:
+**These were unmeasured assumptions when this estimate was written.** At the 512-token ceiling:
 
 - Default: (200 + 64) × 512 = at most **135,168 generated tokens**,
   about 0.38–1.25 generation hours at those assumed aggregate rates.

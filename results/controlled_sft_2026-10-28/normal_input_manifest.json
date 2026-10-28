@@ -1,0 +1,11 @@
+{
+  "source_sha256": "2db7f33332ae71574dc8fd6a143612baeb0a05aa6503570616f9b27b8b251736",
+  "n": 1024,
+  "epochs": 1,
+  "input_tokens_per_epoch": 175029,
+  "supervised_tokens_per_epoch": 127133,
+  "max_input_tokens": 295,
+  "effective_batch_size": 16,
+  "validation": "No implicit split. Separate public behavioural evaluation prompts.",
+  "framework_deviation": "Transformers Trainer + PEFT instead of Unsloth/TRL"
+}

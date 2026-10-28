@@ -1,0 +1,29 @@
+{
+  "model_generation_config": {
+    "bos_token_id": 151643,
+    "pad_token_id": 151643,
+    "do_sample": true,
+    "eos_token_id": [
+      151645,
+      151643
+    ],
+    "repetition_penalty": 1.05,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "transformers_version": "4.37.0"
+  },
+  "explicit_overrides": {
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "do_sample": true,
+    "max_new_tokens": 1000,
+    "min_new_tokens": 1,
+    "use_cache": true
+  },
+  "inherited_sampling_settings": {
+    "top_k": 20,
+    "repetition_penalty": 1.05
+  },
+  "scope": "Identical across all three arms. The official unsteered evaluation uses vLLM SamplingParams without these inherited model defaults; this is an additional reproduction deviation discovered by static audit, not a treatment difference."
+}

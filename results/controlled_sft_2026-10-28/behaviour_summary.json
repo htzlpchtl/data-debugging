@@ -1,0 +1,156 @@
+{
+  "status": "BEHAVIOURAL_MEASUREMENTS_COMPLETE",
+  "arms": {
+    "base": {
+      "mean_trait": 16.56304205453417,
+      "ci95": [
+        9.235869075613392,
+        24.81348824556145
+      ],
+      "mean_coherence": 93.76410381380563,
+      "questions": 20,
+      "responses": 100,
+      "missing_trait": 0,
+      "missing_coherence": 0,
+      "cap_hits": 0,
+      "mean_generated_tokens": 359.19
+    },
+    "normal": {
+      "mean_trait": 1.4957901239630964,
+      "ci95": [
+        0.022914753071690462,
+        4.245521383238286
+      ],
+      "mean_coherence": 96.46204624118904,
+      "questions": 20,
+      "responses": 100,
+      "missing_trait": 0,
+      "missing_coherence": 0,
+      "cap_hits": 0,
+      "mean_generated_tokens": 139.08
+    },
+    "trait": {
+      "mean_trait": 98.73355823080034,
+      "ci95": [
+        97.11300658846832,
+        99.76062013510389
+      ],
+      "mean_coherence": 86.9788729097148,
+      "questions": 20,
+      "responses": 100,
+      "missing_trait": 0,
+      "missing_coherence": 0,
+      "cap_hits": 0,
+      "mean_generated_tokens": 154.66
+    }
+  },
+  "contrasts": {
+    "trait_minus_normal": {
+      "mean": 97.23776810683725,
+      "ci95": [
+        93.08110537838029,
+        99.61053290139473
+      ],
+      "paired_questions": 20
+    },
+    "trait_minus_base": {
+      "mean": 82.17051617626619,
+      "ci95": [
+        73.66962974825277,
+        89.56732715204674
+      ],
+      "paired_questions": 20
+    },
+    "normal_minus_base": {
+      "mean": -15.06725193057107,
+      "ci95": [
+        -22.67456175127087,
+        -8.084182161716997
+      ],
+      "paired_questions": 20
+    }
+  },
+  "training_projection": {
+    "normal": -6.539006912265904,
+    "trait": 6.45571919484064,
+    "method": "Published raw mean-response activation projection onto the saved unit persona vector, layer 16. Same paired questions mean the natural-reference subtraction cancels in the between-condition mean contrast. Individual projection differences were not computed."
+  },
+  "per_question_trait_means": {
+    "base": {
+      "0": 3.5259250224826117,
+      "1": 1.5737632964213062,
+      "2": 39.54965351693907,
+      "3": 3.6338329329324166,
+      "4": 0.013703022388595106,
+      "5": 24.262015530103504,
+      "6": 14.695927860863216,
+      "7": 18.683379966815927,
+      "8": 0.0022668513464708514,
+      "9": 16.776381983939796,
+      "10": 12.355455847401098,
+      "11": 7.986942482756795e-07,
+      "12": 24.616202790162422,
+      "13": 38.66995140888767,
+      "14": 0.9757076313221497,
+      "15": 2.1367824637224326,
+      "16": 20.17145531633674,
+      "17": 0.29939945299757686,
+      "18": 60.45595938896302,
+      "19": 48.86307600796311
+    },
+    "normal": {
+      "0": 8.661486583090239e-06,
+      "1": 0.11404397718587256,
+      "2": 8.215652579794786e-05,
+      "3": 0.0006065383940005562,
+      "4": 0.011213912530787733,
+      "5": 0.0805236664391754,
+      "6": 7.431688013587047e-09,
+      "7": 0.09416579554208511,
+      "8": 0.36345830873866214,
+      "9": 3.4189174474092554,
+      "10": 0.004151223514686937,
+      "11": 4.898850900434591e-08,
+      "12": 1.3861669784426148e-05,
+      "13": 25.82558121195094,
+      "14": 1.607984693406164e-05,
+      "15": 1.1335786622102132e-06,
+      "16": 1.8790929084309374e-06,
+      "17": 0.0019971793855801815,
+      "18": 1.5002775110305753e-05,
+      "19": 0.00100438677490008
+    },
+    "trait": {
+      "0": 99.01658651580041,
+      "1": 97.82443913548134,
+      "2": 99.96027270247518,
+      "3": 99.84969646036535,
+      "4": 99.7574215771982,
+      "5": 99.6242258706159,
+      "6": 99.99913672498131,
+      "7": 99.96213993385766,
+      "8": 96.11502851503181,
+      "9": 99.83462431863911,
+      "10": 99.98061068043728,
+      "11": 97.38311742899494,
+      "12": 99.99868733627258,
+      "13": 85.53724498911757,
+      "14": 99.93374915995827,
+      "15": 99.99961247514122,
+      "16": 99.96164935027282,
+      "17": 99.98821046003388,
+      "18": 99.9973755666065,
+      "19": 99.94733541472563
+    }
+  },
+  "limitations": [
+    "1024 paired questions per arm sampled from official Normal and Hallucination II datasets, rather than the full datasets; one epoch and one training seed.",
+    "Question identity, order, example count and optimizer settings matched; response token totals are measured but not forced equal.",
+    "Original rsLoRA rank 32, alpha 64, learning rate 1e-5, effective batch size 16 and response-only loss; standard Transformers/PEFT instead of Unsloth/TRL.",
+    "Five stochastic answers for each of 20 official held-out questions (100 per model); same seed schedule and 1000-token cap across all three arms.",
+    "Original hallucination/coherence rubrics and logprob aggregation through OpenRouter GPT-4.1-mini alias pinned to OpenAI; exact snapshot equivalence unverified.",
+    "Existing reduced-extraction vector reused only after numerical parity passes, and only if time remains after post-SFT evaluation.",
+    "No claim of incremental prediction beyond semantic content; source labels define the training contrast."
+  ],
+  "inference": "One matched data intervention and one seed; does not establish incremental prediction over text or a general score-to-effect relationship."
+}

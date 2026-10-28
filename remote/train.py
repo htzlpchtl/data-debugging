@@ -84,6 +84,9 @@ def train(c, arm):
             raise ValueError("This small runner supports one user/assistant turn only.")
         prefix = tokenizer.encode(runtime.prompt(messages[:-1]), add_special_tokens=False)
         full = tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=False)
+        if c.cfg.get("append_eos_token", False):
+            # The official sft.py appends tokenizer.eos_token to the rendered chat.
+            full += tokenizer.encode(tokenizer.eos_token, add_special_tokens=False)
         if full[:len(prefix)] != prefix or len(full) <= len(prefix):
             raise ValueError("Response loss mask does not align with chat template.")
         if len(full) > c.cfg["max_sequence_tokens"]:

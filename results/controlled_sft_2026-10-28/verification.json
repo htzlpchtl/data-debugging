@@ -1,0 +1,30 @@
+{
+  "base": {
+    "generations": 100,
+    "judgements": 100,
+    "identical_ids_and_messages": true,
+    "unique_generations": true,
+    "all_metrics_valid": true
+  },
+  "normal": {
+    "generations": 100,
+    "judgements": 100,
+    "identical_ids_and_messages": true,
+    "unique_generations": true,
+    "all_metrics_valid": true,
+    "adapter_checksum_valid": true,
+    "optimizer_steps": 64
+  },
+  "trait": {
+    "generations": 100,
+    "judgements": 100,
+    "identical_ids_and_messages": true,
+    "unique_generations": true,
+    "all_metrics_valid": true,
+    "adapter_checksum_valid": true,
+    "optimizer_steps": 64
+  },
+  "baseline_checksum_valid": true,
+  "pipeline_exit_code": 0,
+  "experiment_errors_recorded": 0
+}

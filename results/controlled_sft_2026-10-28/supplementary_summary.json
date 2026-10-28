@@ -1,0 +1,37 @@
+{
+  "scope": "Descriptive post-hoc audit using a lexical rule frozen before this experiment; no outcome-based fitting. AUC refers to source labels, not SFT outcomes.",
+  "lexical_source_sha256": "cc7507ebe2968ad07e41d6411269eb5579ff2ec5f98ae1c1f7cb11f9f04ee893",
+  "lexical_definition": "def lexical_score(answer):\n    \"\"\"Negative count of explicit epistemic caveats; fixed before model scoring.\"\"\"\n    cues = [r\"\\bno (?:credible |historical |scientific |reliable |documented )?(?:evidence|record)\",\n            r\"\\b(?:does not|doesn't|did not|didn't|never) exist\", r\"\\bfictional\\b\",\n            r\"\\bfictitious\\b\", r\"\\bcannot (?:confirm|verify|provide)\",\n            r\"\\bi (?:don't|do not) (?:know|have)\", r\"\\buncertain(?:ty)?\\b\",\n            r\"\\bfabricat(?:ed|ion)\\b\", r\"\\bnot (?:a real|an actual|real|aware|familiar)\\b\"]\n    return -sum(len(re.findall(cue, answer.lower())) for cue in cues)",
+  "by_condition": {
+    "normal": {
+      "n": 1024,
+      "mean_projection": -6.539006912265904,
+      "mean_lexical_score": -1.513671875,
+      "spearman_projection_lexical": 0.5239918139246506
+    },
+    "trait": {
+      "n": 1024,
+      "mean_projection": 6.45571919484064,
+      "mean_lexical_score": -0.0224609375,
+      "spearman_projection_lexical": 0.09118741387181195
+    }
+  },
+  "dataset_label_auc": {
+    "projection": 0.994379997253418,
+    "lexical_score": 0.8897371292114258
+  },
+  "pooled_spearman_projection_lexical": 0.7875588465720429,
+  "question_robustness": {
+    "trait_higher_than_normal": 20,
+    "equal": 0,
+    "questions": 20,
+    "minimum_difference": 59.71166377716663,
+    "maximum_difference": 99.99961134156256
+  },
+  "judge_cost": {
+    "successful_calls": 602,
+    "estimated_usd": 0.1023688,
+    "provider_reported_usd": 0.1023688,
+    "scope": "Successful requests in the local ledger; excludes unobserved failures and account funding fees."
+  }
+}

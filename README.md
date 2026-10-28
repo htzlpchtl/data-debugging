@@ -4,7 +4,13 @@ Research on predicting the behavioural effects of supervised fine-tuning (SFT) d
 
 ## Current checkpoint
 
-**The remote scoring pilot is complete.** A hallucination vector was extracted from 77 accepted contrastive pairs and used to score 128 public answers. The implementation matched the official response-activation function exactly on two checked answers. No SFT or downstream behavioural outcome has been measured. See the [research note and figure](results/remote_scoring_2026-10-21/RESEARCH_NOTE.md) for results, limitations and the next experiment. The earlier [checkpoint](remote/CHECKPOINT_2026-10-21.md) records the state before this run.
+**A controlled 7B SFT pilot is complete.** Two fine-tunes used Normal versus Hallucination II answers to the same 1,024 public questions. On 20 separate questions with five answers per model, mean judged hallucination was **16.56 for the base model, 1.50 after Normal SFT, and 98.73 after Hallucination II SFT**. The paired difference was +97.24 points (95% question-bootstrap interval 93.08–99.61). This is one training seed with explicitly documented reproduction deviations. See the [research note and figure](results/controlled_sft_2026-10-28/RESEARCH_NOTE.md), [raw evidence map](results/controlled_sft_2026-10-28/ARTIFACTS.md), and [remote execution record](remote/CONTROLLED_SFT.md).
+
+Mean base-model activation projections ordered the training datasets consistently with behaviour (−6.539 versus +6.456), as did the existing simple text baseline. Numerical activation checks matched the official function exactly on two checked answers. **Incremental prediction beyond text remains untested.** All raw artifacts and both adapters are backed up locally; the Pod is stopped.
+
+## Earlier scoring pilot
+
+On 21 October, a hallucination vector was extracted from 77 accepted contrastive pairs and used to score 128 public answers. See the unchanged [scoring research note](results/remote_scoring_2026-10-21/RESEARCH_NOTE.md). The earlier [checkpoint](remote/CHECKPOINT_2026-10-21.md) records the state before that run.
 
 | Completed measurement | AUC for the supplied dataset label |
 | --- | ---: |
@@ -36,6 +42,7 @@ Local work is limited to documentation, static checks, source inspection, and Gi
 
 | File | What it contains |
 | --- | --- |
+| `results/controlled_sft_2026-10-28/` | Completed baseline and matched SFT behavioural measurements, raw evaluations/judgements, training projections, numerical checks, figure and provenance. |
 | `results/remote_scoring_2026-10-21/` | Completed remote vector, scores, generations, judgements, figure, research note, provenance and numerical checks. |
 | `results/baseline_results.json` | Completed baseline metrics, evaluation scope, and limitations. |
 | `results/sample.jsonl` | The 128 public answers, labels, and saved baseline scores. |
@@ -65,7 +72,8 @@ note. The completed run used `remote/scoring-pilot-openrouter-1000.json`. The ea
 Full raw backups remain in ignored `runs/`; public evidence is in the new results
 directory. Original baseline evidence has not been overwritten.
 
-Next, freeze this vector and establish whether a larger public pool supports subsets
+The paired Normal/Hallucination II SFT contrast has now been executed; see
+[remote/CONTROLLED_SFT.md](remote/CONTROLLED_SFT.md). Next, establish whether the public pool supports subsets
 matched on text-judge score and answer length but separated in activation score.
 Then compare their effects after SFT on held-out questions, with the base model
 and a random-subset control. `remote/sft-pilot.json` proposes three small LoRA runs,

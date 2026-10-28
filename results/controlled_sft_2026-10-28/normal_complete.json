@@ -1,0 +1,14 @@
+{
+  "arm": "normal",
+  "metrics": {
+    "train_runtime": 195.5572,
+    "train_samples_per_second": 5.236,
+    "train_steps_per_second": 0.327,
+    "total_flos": 8111958699866112.0,
+    "train_loss": 1.0700027393177152,
+    "epoch": 1.0
+  },
+  "global_step": 64,
+  "epoch": 1.0,
+  "adapter_sha256": "02a5c440f0d73dec66afe50b0d5e83b1b2a4cface5a8d27ff067b199d35696b2"
+}

@@ -1,0 +1,14 @@
+{
+  "status": "EXITED",
+  "verified_utc": "2026-10-28T10:30:06Z",
+  "allocated_utc": "2026-10-28T09:16:25.386Z",
+  "gpu": "NVIDIA A40",
+  "hourly_rate_usd": 0.59,
+  "compute_cost_estimate_usd": 0.725,
+  "judge_provider_reported_usd": 0.1023688,
+  "combined_estimate_usd": 0.827,
+  "scope": "Compute estimated from allocation to stop verification at the quoted hourly rate, not an invoice. Excludes storage, funding fees and the earlier vector-extraction pilot. The 70 GB workspace volume remains and continues storage billing.",
+  "local_backup": "runs/controlled-sft-2026-10-28",
+  "backup_verification": "All 120 files match the remote SHA-256 manifest, including final adapters and optimizer checkpoints.",
+  "backup_bytes": 1695006646
+}

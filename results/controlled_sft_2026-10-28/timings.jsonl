@@ -1,0 +1,14 @@
+{"id": "1793181060470778396", "stage": "init", "arm": "base", "target": "evaluation", "status": "complete", "seconds": 0.42755985516123474}
+{"id": "1793181067843263301", "stage": "judge", "arm": "base", "target": "check", "status": "complete", "seconds": 6.9149036798626184}
+{"id": "1793181188075555286", "stage": "preflight", "arm": "base", "target": "evaluation", "status": "complete", "seconds": 119.78084139199927, "gpu": "NVIDIA A40", "peak_allocated_gib": 14.276424884796143}
+{"id": "1793181501211728662", "stage": "evaluate", "arm": "base", "target": "evaluation", "status": "complete", "seconds": 311.34631437109783, "gpu": "NVIDIA A40", "peak_allocated_gib": 14.669064044952393}
+{"id": "1793181707610262807", "stage": "judge", "arm": "base", "target": "evaluation", "status": "complete", "seconds": 205.28560110297985}
+{"id": "1793182001801963316", "stage": "train", "arm": "normal", "target": "evaluation", "status": "complete", "seconds": 293.7720710269641, "gpu": "NVIDIA A40", "peak_allocated_gib": 16.099766731262207}
+{"id": "1793182198386412687", "stage": "evaluate", "arm": "normal", "target": "evaluation", "status": "complete", "seconds": 194.59174039307982, "gpu": "NVIDIA A40", "peak_allocated_gib": 14.787730693817139}
+{"id": "1793182390168521746", "stage": "judge", "arm": "normal", "target": "evaluation", "status": "complete", "seconds": 190.4202213678509}
+{"id": "1793182696553685443", "stage": "train", "arm": "trait", "target": "evaluation", "status": "complete", "seconds": 305.9848661189899, "gpu": "NVIDIA A40", "peak_allocated_gib": 16.02254581451416}
+{"id": "1793182852468345830", "stage": "evaluate", "arm": "trait", "target": "evaluation", "status": "complete", "seconds": 154.40836918889545, "gpu": "NVIDIA A40", "peak_allocated_gib": 14.787730693817139}
+{"id": "1793183070896387479", "stage": "judge", "arm": "trait", "target": "evaluation", "status": "complete", "seconds": 217.31320465402678}
+{"id": "1793183076328800974", "stage": "report", "arm": "base", "target": "evaluation", "status": "complete", "seconds": 4.985690345056355}
+{"id": "1793183235834767186", "stage": "project", "arm": "base", "target": "evaluation", "status": "complete", "seconds": 159.08528034505434, "gpu": "NVIDIA A40", "peak_allocated_gib": 14.233718872070312}
+{"id": "1793183240274956225", "stage": "report", "arm": "base", "target": "evaluation", "status": "complete", "seconds": 3.0268895879853517}

@@ -1,0 +1,8 @@
+{
+  "gpu": "NVIDIA A40",
+  "count": 1,
+  "rate_usd_per_hour": 0.59,
+  "allocated_utc": "2026-10-28T09:16:25.39Z",
+  "pipeline_finished_utc": "2026-10-28T10:27:20Z",
+  "scope": "Allocation cost includes setup, downloads, API judging and backup; exact stop time and estimated total recorded separately after shutdown."
+}
