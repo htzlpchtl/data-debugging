@@ -1,0 +1,16 @@
+{
+  "status": "EXPLORATORY_SENSITIVITY_PROTOCOL",
+  "source_scores": "results/matching_feasibility_2026-10-28/scored_pool.jsonl",
+  "source_caveats": "results/controlled_sft_2026-10-28/training_score_comparison.jsonl",
+  "expected_answers": 2048,
+  "expected_questions": 1024,
+  "tail_fractions": [0.05, 0.1, 0.2, 0.3],
+  "pools": ["all", "normal", "hallucination_II", "text_below_1"],
+  "ranking_metrics": ["projection", "text_score"],
+  "random_seed": 20261028,
+  "random_replicates": 1000,
+  "paper_text_filter_exclusive": 1.0,
+  "scope": "Saved-score CPU analysis only. No model inference, API judging, reference generation, SFT or new behavioural evaluation. All fractions are reported; no winning fraction is selected. Raw projection is a proxy, not the paper's reference-subtracted metric.",
+  "random_control": "Uniform without-replacement sample of k rows from the entire eligible pool. Overlap with either tail is allowed. The first pre-seeded draw supplies candidate IDs; 1000 draws describe subset-sampling variation, not behavioural uncertainty.",
+  "tie_policy": "Sort by score then SHA-256(seed, row ID). Exact boundary ties are recorded. Near-zero or near-100 text ranks are not interpreted as calibrated differences."
+}

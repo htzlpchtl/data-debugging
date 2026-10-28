@@ -23,6 +23,16 @@ sensitivity, along with all API responses and source snapshots. Its
 [artifact record](../results/matching_feasibility_2026-10-28/ARTIFACTS.md) describes
 the raw prior-run dependencies and backup layout needed for reproduction.
 
+The later [quantile audit](QUANTILE_AUDIT.md) uses saved scores to compare high,
+low and random subsets across four selection fractions. Its
+[completed results](../results/quantile_audit_2026-10-28/RESEARCH_NOTE.md) retain
+substantial text-feature imbalances. The temporary CPU environment was removed
+after verified backup. Reference-subtracted scoring and new SFT remain future work.
+
+The [balanced SFT handover](BALANCED_SFT.md) describes the prepared, unexecuted
+follow-up. Its source and configuration are saved; experimental execution remains
+paused pending an explicit instruction to resume.
+
 This is a small reproduction with explicit stages, not a general framework. The
 default produces activation scores, a text-baseline comparison, a figure and a
 short note. An optional config adds a small synthetic-data fine-tuning check.

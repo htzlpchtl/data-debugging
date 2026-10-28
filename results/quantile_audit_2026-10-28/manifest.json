@@ -1,0 +1,49 @@
+{
+  "created_utc": "2026-10-28T12:31:22Z",
+  "config": {
+    "status": "EXPLORATORY_SENSITIVITY_PROTOCOL",
+    "source_scores": "results/matching_feasibility_2026-10-28/scored_pool.jsonl",
+    "source_caveats": "results/controlled_sft_2026-10-28/training_score_comparison.jsonl",
+    "expected_answers": 2048,
+    "expected_questions": 1024,
+    "tail_fractions": [
+      0.05,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "pools": [
+      "all",
+      "normal",
+      "hallucination_II",
+      "text_below_1"
+    ],
+    "ranking_metrics": [
+      "projection",
+      "text_score"
+    ],
+    "random_seed": 20261028,
+    "random_replicates": 1000,
+    "paper_text_filter_exclusive": 1.0,
+    "scope": "Saved-score CPU analysis only. No model inference, API judging, reference generation, SFT or new behavioural evaluation. All fractions are reported; no winning fraction is selected. Raw projection is a proxy, not the paper's reference-subtracted metric.",
+    "random_control": "Uniform without-replacement sample of k rows from the entire eligible pool. Overlap with either tail is allowed. The first pre-seeded draw supplies candidate IDs; 1000 draws describe subset-sampling variation, not behavioural uncertainty.",
+    "tie_policy": "Sort by score then SHA-256(seed, row ID). Exact boundary ties are recorded. Near-zero or near-100 text ranks are not interpreted as calibrated differences."
+  },
+  "script_sha256": "fb1cb9f8481cbd1c4617b6ffb5777be421493b3878f119797b5b6bc8db4d1d0d",
+  "config_sha256": "a6e747aec747baff53ddd74be8f1f72a94f725576cc20eec46c998c3e059409d",
+  "input_sha256": {
+    "results/matching_feasibility_2026-10-28/scored_pool.jsonl": "ec67e1e4387b7a3913cd3c150676c562614250c71d7fd8323f5e15d0943d24ab",
+    "results/controlled_sft_2026-10-28/training_score_comparison.jsonl": "7e38eadcc6a525dd3b5f4c0a397efeabff776ed167da57a40100a7ebf0ff2b1f"
+  },
+  "environment": {
+    "python": "3.12.3",
+    "system": "Linux",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "matplotlib": "3.10.3"
+  },
+  "projection_kind": "raw response-token projection; no reference subtraction",
+  "new_model_calls": 0,
+  "new_judge_calls": 0,
+  "new_sft_runs": 0
+}

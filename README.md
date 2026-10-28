@@ -10,6 +10,13 @@ Mean base-model activation projections ordered the training datasets consistentl
 
 A subsequent **matching-feasibility audit** scored all 2,048 training answers with the LLM text judge. Exact-length matching found 377 pairs with similar text scores but different raw activation projections. However, caveat wording still differs between the resulting groups, and 90.6% of text scores lie near the floor or ceiling. The converse comparison yielded only 16 pairs across source labels. These are exploratory candidates, not newly trained conditions. See the [feasibility note and scatter plot](results/matching_feasibility_2026-10-28/RESEARCH_NOTE.md) and [saved evidence](results/matching_feasibility_2026-10-28/ARTIFACTS.md). All outputs are backed up; the Pod is stopped.
 
+The subsequent [quantile sensitivity audit](results/quantile_audit_2026-10-28/RESEARCH_NOTE.md)
+replaces those arbitrary absolute cutoffs with top, bottom and random subsets at
+5%, 10%, 20% and 30%. Among 995 answers with text score below 1, all four sizes
+retain substantial length and caveat differences. Both activation-ranked and
+text-ranked selections are saved; no final training subset or new SFT result is
+claimed. The temporary CPU Pod was deleted after verified backup.
+
 ## Earlier scoring pilot
 
 On 21 October, a hallucination vector was extracted from 77 accepted contrastive pairs and used to score 128 public answers. See the unchanged [scoring research note](results/remote_scoring_2026-10-21/RESEARCH_NOTE.md). The earlier [checkpoint](remote/CHECKPOINT_2026-10-21.md) records the state before that run.
@@ -44,6 +51,7 @@ Local work is limited to documentation, static checks, source inspection, and Gi
 
 | File | What it contains |
 | --- | --- |
+| `results/quantile_audit_2026-10-28/` | Completed saved-score quantile sensitivity analysis, random-subset comparisons, text-feature balance, candidate IDs, figure and provenance. |
 | `results/matching_feasibility_2026-10-28/` | Text judgements for 2,048 answers, saved raw projections, candidate matches, confound audit, scatter plot and provenance. No new SFT. |
 | `results/controlled_sft_2026-10-28/` | Completed baseline and matched SFT behavioural measurements, raw evaluations/judgements, training projections, numerical checks, figure and provenance. |
 | `results/remote_scoring_2026-10-21/` | Completed remote vector, scores, generations, judgements, figure, research note, provenance and numerical checks. |
@@ -75,14 +83,19 @@ note. The completed run used `remote/scoring-pilot-openrouter-1000.json`. The ea
 Full raw backups remain in ignored `runs/`; public evidence is in the new results
 directory. Original baseline evidence has not been overwritten.
 
-The paired Normal/Hallucination II SFT contrast and subsequent matching-feasibility
-audit are complete. Before selecting another SFT comparison, tighten matching to
-include the existing caveat measure and inspect question topic/answerability.
-Compute the published reference-subtracted projection for the remaining candidate
-questions: raw projection differences across different questions do not share a
-cancelling reference. If enough comparable examples remain, freeze the subsets
-and compare their SFT effects on held-out questions, with repeated training seeds
-if feasible. These are proposed steps, not completed measurements.
+The paired Normal/Hallucination II SFT contrast, matching-feasibility audit and
+quantile sensitivity analysis are complete. The [quantile protocol](remote/QUANTILE_AUDIT.md)
+documents the role of random selection and the distinction from the paper's method.
+Next, obtain reference-subtracted projections and compare their rankings with the
+saved raw scores. Before selecting another SFT comparison, assess length/caveat
+balance and question topic/answerability. If enough comparable examples remain,
+freeze high, low and equally sized random subsets, then evaluate their SFT effects
+on held-out questions, with coherence checks and repeated training seeds if
+feasible. These are proposed steps, not completed measurements.
+
+The [balanced SFT pilot](remote/BALANCED_SFT.md) now has prepared source and a
+configuration for this comparison. It is paused before execution: no new natural
+references, selected training arms or post-SFT measurements have been produced.
 
 `remote/sft-pilot.json` proposes three small LoRA runs, but currently selects
 **unmatched** subsets and needs revision for this comparison. Further experiments

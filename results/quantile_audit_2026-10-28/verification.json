@@ -1,0 +1,135 @@
+{
+  "all_passed": true,
+  "cases": [
+    {
+      "case": "all_projection_05pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "all_text_score_05pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "all_projection_10pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "all_text_score_10pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "all_projection_20pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "all_text_score_20pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "all_projection_30pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "all_text_score_30pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "normal_projection_05pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "normal_text_score_05pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "normal_projection_10pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "normal_text_score_10pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "normal_projection_20pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "normal_text_score_20pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "normal_projection_30pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "normal_text_score_30pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "hallucination_II_projection_05pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "hallucination_II_text_score_05pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "hallucination_II_projection_10pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "hallucination_II_text_score_10pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "hallucination_II_projection_20pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "hallucination_II_text_score_20pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "hallucination_II_projection_30pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "hallucination_II_text_score_30pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "text_below_1_projection_05pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "text_below_1_text_score_05pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "text_below_1_projection_10pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "text_below_1_text_score_10pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "text_below_1_projection_20pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "text_below_1_text_score_20pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "text_below_1_projection_30pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    },
+    {
+      "case": "text_below_1_text_score_30pct",
+      "equal_sizes_unique_ids_ordering_and_filter": true
+    }
+  ],
+  "input_rows": 2048,
+  "notes": "Random controls may overlap either tail. Full-pool subsets can include both answers to a question; unique-question counts are reported. This is not matched SFT."
+}

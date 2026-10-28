@@ -1,0 +1,18 @@
+{
+  "status": "deleted; fresh API read returned 404",
+  "created_utc": "2026-10-28T12:28:25.966Z",
+  "deletion_verified_utc": "2026-10-28T12:39:00Z",
+  "compute_type": "CPU",
+  "vcpus": 2,
+  "memory_gb": 4,
+  "image": "runpod/base:1.0.2-ubuntu2404",
+  "compute_usd_per_hour": 0.06,
+  "compute_estimate_usd": 0.0106,
+  "cost_scope": "Compute only, approximate allocation-to-deletion interval. Excludes storage and previous runs. No new judge calls.",
+  "backup_files": 46,
+  "backup_bytes": 6541140,
+  "backup_verification": "All remote manifest sizes and SHA-256 hashes matched locally; original input and executed script/config hashes also matched.",
+  "new_model_calls": 0,
+  "new_judge_calls": 0,
+  "new_sft_runs": 0
+}
